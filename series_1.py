@@ -56,8 +56,8 @@ def create_covariates(series):
     
     # Fill missing values that may have been introduced by indicators
     covariates_df = covariates.to_dataframe()
-    covariates_df.fillna(method='ffill', inplace=True)
-    covariates_df.fillna(method='bfill', inplace=True)
+    covariates_df.ffill(inplace=True)
+    covariates_df.bfill(inplace=True)
     covariates = TimeSeries.from_dataframe(covariates_df, freq='B')
 
     return covariates
